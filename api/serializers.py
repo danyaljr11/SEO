@@ -4,11 +4,15 @@ from api.models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    photo = serializers.SerializerMethodField()
-
     class Meta:
         model = Article
-        fields = '__all__'
+        fields = [
+            'header_en', 'header_ar',
+            'summary_en', 'summary_ar',
+            'description_en', 'description_ar',
+            'photo', 'link',
+            'link_title_en', 'link_title_ar'
+        ]
 
     def get_photo(self, obj):
         # Construct the full URL for the photo field
